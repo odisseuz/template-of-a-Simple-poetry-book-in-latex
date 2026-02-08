@@ -1,60 +1,74 @@
-%Preambulo
-\documentclass[11pt, a5paper]{article} % {article} por escolha estilistica p livros pequenos
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[brazil]{babel}
-\usepackage{graphicx} 
+% ------------------------------------------------------------------------
+% PREAMBLE (Configuration)
+% ------------------------------------------------------------------------
+\documentclass[11pt, a5paper]{article} % Font size 11pt, Paper size A5 (standard for pocket books)
 
-%Design e Tipografia
-\usepackage{mathpazo} %fonte 
-\usepackage[protrusion=true,expansion=true]{microtype} 
-\usepackage{xcolor} 
+% --- Language and Encoding ---
+\usepackage[utf8]{inputenc}  % Encoding for special characters (accents)
+\usepackage[T1]{fontenc}     % Font encoding for correct hyphenation
+\usepackage[brazil]{babel}   % Portuguese language support (dates, hyphenation)
 
-% Definição de Cores
-\definecolor{textoSuave}{RGB}{60, 60, 60} % Cinza Chumbo
-\definecolor{pretoTotal}{RGB}{0, 0, 0}      % Preto Puro
+% --- Typography and Design ---
+\usepackage{mathpazo}        % Font style: Palatino (classic, serif)
+\usepackage{microtype}       % Improves spacing between letters/words (professional look)
+\usepackage{xcolor}          % Allows custom color definitions
+\usepackage{graphicx}        % For inserting images
+\usepackage{geometry}        % For margin settings
 
-\usepackage{verse} %o pacote para poesia
-\usepackage{geometry}
-\usepackage{pdflscape}
-\usepackage{tikz}
-\usepackage[hidelinks]{hyperref}
-\usetikzlibrary{decorations.text, shapes.geometric, calc}
+% --- Layout and Formatting ---
+\usepackage{verse}           % Specific package for poetry alignment
+\usepackage{tocloft}         % Customization of the Table of Contents
+\usepackage{tikz}            % For drawing vector graphics (shapes, lines)
+\usepackage[hidelinks]{hyperref} % Clickable links in PDF (without red boxes)
 
-% --- Configuração do Sumário ---
-\usepackage{tocloft}
-\renewcommand{\cftsecdotsep}{\cftnodot} % Remove pontilhado
-\renewcommand{\cftsecfont}{\normalfont\color{textoSuave}}  % Fonte item sumario
-\renewcommand{\cftsecpagefont}{\normalfont\color{textoSuave}} % Fonte numero pagina
-\renewcommand{\contentsname}{\hfill sumário \hfill} % Centraliza titulo
+% --- Page Margins ---
+\geometry{
+    top=1.8cm, 
+    bottom=1.8cm, 
+    left=1.8cm, 
+    right=1.8cm
+}
 
-% Funções para poemas
+% --- Color Definitions ---
+% Define custom colors using RGB values (0-255)
+\definecolor{softText}{RGB}{60, 60, 60} % Dark Gray (softer than pure black)
+\definecolor{pureBlack}{RGB}{0, 0, 0}   % Pure Black
+
+% --- Table of Contents (ToC) Styling ---
+\renewcommand{\cftsecdotsep}{\cftnodot}           % Removes dots between title and page number
+\renewcommand{\cftsecfont}{\normalfont\color{softText}}     % Font style for section titles
+\renewcommand{\cftsecpagefont}{\normalfont\color{softText}} % Font style for page numbers
+\renewcommand{\contentsname}{\hfill sumário \hfill}         % Centers the title "Sumário"
+
+% --- Custom Commands ---
+% \poema{Title}: Creates a section without a number (*) but adds it to the ToC
 \newcommand{\poema}[1]{%
-    \phantomsection % Cria âncora para links funcionarem
-    \section*{#1}   % Título no texto (sem número)
-    \addcontentsline{toc}{section}{#1} % Adiciona manualmente ao sumário
+    \phantomsection                % Creates an anchor for hyperlinks
+    \section*{#1}                  % Prints title without number (e.g., 1. Title)
+    \addcontentsline{toc}{section}{#1} % Manually adds to Table of Contents
 } 
 
-%Margens
-\geometry{top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm}
+% ------------------------------------------------------------------------
+% DOCUMENT BODY
+% ------------------------------------------------------------------------
+\begin{document} 
 
-%Removendo a numeração padrão 
+% Apply the soft gray color globally (can be overridden)
+\color{softText}
+
+% Remove page numbering for cover and front matter
 \pagestyle{empty}
 
-\begin{document} %início do livro
-
-\color{textoSuave}
-
-% Capa
+% --- TITLE PAGE (CAPA) ---
 \begin{titlepage}
-    \sffamily 
-    \noindent
-    \color{pretoTotal}
+    \sffamily               % Sans-serif font for the cover
+    \noindent               % Prevents paragraph indentation
+    \color{pureBlack}       % Switch to black for the cover
 
-    \vspace*{2cm} 
+    \vspace*{2cm}           % Vertical space from top
     {\small \MakeUppercase{Nome do Autor}} \\[-0.2cm] 
-    \rule{3cm}{4pt} 
-    \vspace*{\fill} 
+    \rule{3cm}{4pt}         % Horizontal line (width, thickness)
+    \vspace*{\fill}         % Pushes content to the center
 
     {\fontsize{50}{55}\selectfont \bfseries 
     TÍTULO \\ 
@@ -63,25 +77,23 @@
 
     \vspace{1.5cm}
 
+    % Geometric circle using TikZ
     \begin{tikzpicture}
         \fill[black] (0,0) circle (1.2cm);
     \end{tikzpicture}
 
-    \vspace*{\fill}
+    \vspace*{\fill}         % Pushes date to the bottom
 
     {\footnotesize Fortaleza, 2026} 
     
-    \rmfamily 
+    \rmfamily               % Return to Serif font
 \end{titlepage}
 
-% PÁGINA 2: FICHA TÉCNICA
+% --- TECHNICAL PAGE (FICHA TÉCNICA) ---
 \newpage
-\thispagestyle{empty}
-
-% Espaço reservado para o texto técnico (ISBN, etc)
-\vspace*{\fill}
+\vspace*{\fill}             % Pushes text to the bottom of the page
 \begin{flushleft}
-    \footnotesize
+    \footnotesize           % Smaller font size
     \textbf{Ficha Técnica} \\
     Autora: Taz\\
     Ano: 2026 \\
@@ -89,49 +101,48 @@
     \textit{Todos os direitos reservados.}
 \end{flushleft}
 
-% --- SUMÁRIO ---
+% --- TABLE OF CONTENTS ---
 \newpage
 \tableofcontents 
-\thispagestyle{empty} 
 \newpage
 
-% --- INÍCIO DOS POEMAS ------
-
-% exp com 2 poesias na msm pagina
-
+% --- POEMS START HERE ---
+% Turn page numbering back on (1, 2, 3...)
 \pagestyle{plain} 
 \setcounter{page}{1}
 
+% Poem 1
 \poema{abbububublé}
 
 \begin{verse}
-    abububule, abubububle \\
+    abububule, abubububle \\  % \\ breaks the line
     auaubububu, bububuele \\
 \end{verse}
 
-\vspace{2cm}
+\vspace{2cm} % Space between poems on the same page
 
+% Poem 2
 \poema{bubublé}
 
 \begin{verse}
     abu\\
     bu\\
     blé\\
-    \vspace{0.5cm} %espaço entre poesias
+    \vspace{0.5cm} % Stanza break (visual space)
     o bububule\\
     abububbule
 \end{verse}
 
-% --- POEMA 3 ---
+% Poem 3 (New Page)
 \newpage
 \poema{ipsum ababububle} 
 
-\vspace*{\fill} 
+\vspace*{\fill} % Centers poem vertically on the page
 \begin{verse}
     laralralrl\\
     asdkadasdlk\\
-    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\
-
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\! % The ! tightens spacing if line is too long
+    
     \vspace{0.5cm}
     
     adsasdçkãsdçkasdçlk\\
@@ -142,12 +153,13 @@
 \end{verse}
 \vspace*{\fill}
 
-%contra-capa
+% --- BACK COVER (CONTRA-CAPA) ---
 \newpage
+\pagestyle{empty} % Turn off page numbering again
 \vspace*{\fill} 
 
 \begin{center}
-    % Dictionary style
+    % Minipage creates a "box" of text with specific width (10cm)
     \begin{minipage}{10cm}
         \centering
         \textbf{\large afeto} \\
@@ -161,28 +173,27 @@
 
     \vspace{1.5cm}
     
-    $\diamond$ 
+    $\diamond$ % Diamond symbol
     
     \vspace{1.5cm}
     
-    % aaaaaaaaaaaaaaaaa
+    % Dedication box
     \vspace{0.3cm}
     \begin{minipage}{8cm}
         \centering \footnotesize \itshape
-        \color{textoSuave}
+        \color{softText}
         Por toda vida e coragem derramadas nestas folhas de papel.
     \end{minipage}
     
     \vspace{3cm} 
     
-    % O RODAPÉ TÉCNICO
-    {\tiny \color{textoSuave} 
+    % Technical footer
+    {\tiny \color{softText} 
     Edição 001 $\cdot$ Fortaleza/CE \\
     Design e Tipografia por @desenhosesquisitos123 \\
     Fevereiro de 2026 \\
     Composto em \LaTeX
     }
 \end{center}
-
 
 \end{document}

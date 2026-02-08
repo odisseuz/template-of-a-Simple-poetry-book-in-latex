@@ -63,6 +63,3 @@ This centers the poem vertically on the page.
 \vspace*{\fill}         % Centers the poem vertically
 
 %or you can do not use a \newpage and separate using \vspace{} for multiple poems on the same page
-
-
-with the new code, can you atualize the readme

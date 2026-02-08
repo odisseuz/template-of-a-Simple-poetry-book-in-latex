@@ -1,0 +1,192 @@
+%Preambulo
+\documentclass[11pt, a5paper]{article} % {article} por escolha estilistica p livros pequenos
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{graphicx} 
+
+%Design e Tipografia
+\usepackage{mathpazo} %fonte 
+\usepackage[protrusion=true,expansion=true]{microtype} 
+\usepackage{xcolor} 
+
+% Definição de Cores
+\definecolor{textoSuave}{RGB}{60, 60, 60} % Cinza Chumbo
+\definecolor{pretoTotal}{RGB}{0, 0, 0}      % Preto Puro
+
+\usepackage{verse} %o pacote para poesia
+\usepackage{geometry}
+\usepackage{pdflscape}
+\usepackage{tikz}
+\usepackage[hidelinks]{hyperref}
+\usetikzlibrary{decorations.text, shapes.geometric, calc}
+
+% --- Configuração do Sumário ---
+\usepackage{tocloft}
+\renewcommand{\cftsecdotsep}{\cftnodot} % Remove pontilhado
+\renewcommand{\cftsecfont}{\normalfont\color{textoSuave}}  % Fonte item sumario
+\renewcommand{\cftsecpagefont}{\normalfont\color{textoSuave}} % Fonte numero pagina
+\renewcommand{\contentsname}{\hfill sumário \hfill} % Centraliza titulo
+
+% Funções para poemas
+\newcommand{\poema}[1]{%
+    \phantomsection % Cria âncora para links funcionarem
+    \section*{#1}   % Título no texto (sem número)
+    \addcontentsline{toc}{section}{#1} % Adiciona manualmente ao sumário
+} 
+
+%Margens
+\geometry{top=1.8cm, bottom=1.8cm, left=1.8cm, right=1.8cm}
+
+%Removendo a numeração padrão 
+\pagestyle{empty}
+
+\begin{document} %início do livro
+
+\color{textoSuave}
+
+% Capa
+\begin{titlepage}
+    \sffamily 
+    \noindent
+    \color{pretoTotal}
+
+    \vspace*{2cm} 
+    {\small \MakeUppercase{Nome do Autor}} \\[-0.2cm] 
+    \rule{3cm}{4pt} 
+    \vspace*{\fill} 
+
+    {\fontsize{50}{55}\selectfont \bfseries 
+    TÍTULO \\ 
+    DA \\ 
+    OBRA}
+
+    \vspace{1.5cm}
+
+    \begin{tikzpicture}
+        \fill[black] (0,0) circle (1.2cm);
+    \end{tikzpicture}
+
+    \vspace*{\fill}
+
+    {\footnotesize Fortaleza, 2026} 
+    
+    \rmfamily 
+\end{titlepage}
+
+% PÁGINA 2: FICHA TÉCNICA / ISBN (CRUZEIRO DO SUL)
+\newpage
+\thispagestyle{empty}
+
+% Espaço reservado para o texto técnico (ISBN, etc)
+\vspace*{\fill}
+\begin{flushleft}
+    \footnotesize
+    \textbf{Ficha Técnica} \\
+    Autora: Taz\\
+    Ano: 2026 \\
+    ISBN: [Em breve] \\
+    \textit{Todos os direitos reservados.}
+\end{flushleft}
+
+% --- SUMÁRIO ---
+\newpage
+\tableofcontents 
+\thispagestyle{empty} 
+\newpage
+
+% --- INÍCIO DOS POEMAS ------
+
+%exp com 2 poesias na msm pagina
+
+\pagestyle{plain} 
+\setcounter{page}{1}
+
+\poema{abbububublé}
+
+\begin{verse}
+    abububule, abubububle \\
+    auaubububu, bububuele \\
+\end{verse}
+
+\vspace{2cm}
+
+\poema{bubublé}
+
+\begin{verse}
+    abu\\
+    bu\\
+    blé\\
+    \vspace{0.5cm} %espaço entre poesias
+    o bububule\\
+    abububbule
+\end{verse}
+
+%%%% Pagina 2
+
+\newpage
+
+% --- POEMA 3 ---
+\newpage
+\poema{ipsum ababububle} 
+
+\vspace*{\fill} 
+\begin{verse}
+    laralralrl\\
+    asdkadasdlk\\
+    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\
+
+    \vspace{0.5cm}
+    
+    adsasdçkãsdçkasdçlk\\
+    
+    \vspace{0.5cm}
+
+    adçlasdçladsk\\
+\end{verse}
+\vspace*{\fill}
+
+%contra-capa
+\newpage
+\vspace*{\fill} 
+
+\begin{center}
+    % Dictionary style
+    \begin{minipage}{10cm}
+        \centering
+        \textbf{\large afeto} \\
+        \textit{\small (substantivo)} \\
+        \vspace{0.2cm}
+        \footnotesize
+        1. Disposição da alma em ser tocada pelo mundo, \textit{vir-a-ser}. \\
+        2. Alimento invisível tão vital quanto o pão; manifesta-se no beijo, no abraço e no silêncio entre o eu e o Outro. \\
+        3. A arte de transformar a presença em permanência na vida interna.
+    \end{minipage}
+
+    \vspace{1.5cm}
+    
+    $\diamond$ 
+    
+    \vspace{1.5cm}
+    
+    % aaaaaaaaaaaaaaaaa
+    \vspace{0.3cm}
+    \begin{minipage}{8cm}
+        \centering \footnotesize \itshape
+        \color{textoSuave}
+        Por toda vida e coragem derramadas nestas folhas de papel.
+    \end{minipage}
+    
+    \vspace{3cm} 
+    
+    % O RODAPÉ TÉCNICO
+    {\tiny \color{textoSuave} 
+    Edição 001 $\cdot$ Fortaleza/CE \\
+    Design e Tipografia por @desenhosesquisitos123 \\
+    Fevereiro de 2026 \\
+    Composto em \LaTeX
+    }
+\end{center}
+
+
+\end{document}

@@ -7,7 +7,7 @@ Tested on Overleaf.
 
 I am sharing this so that anyone can publish their own poetry in a minimalist design.
 
-*Note: Gemini 3 Pro was used to standardize the code structure and improve readability.*
+*Note: Gemini 3 Pro was used to standardize the code structure and improve readability. And for proofreading and correcting spelling mistakes*
 
 ## Features
 
@@ -15,8 +15,9 @@ I am sharing this so that anyone can publish their own poetry in a minimalist de
 - Minimalist Design
 - Automated Table of Contents (Uploads when you write the poetry inside the code)
 - Beginner Friendly — The main goal of this small project
+
 ---
-## How to Use (for people who are not used with gitand github)
+## How to Use (for people who are not used with github)
 1.  Go to [Overleaf.com](https://www.overleaf.com/) and create a free account.
 2.  Click **"New Project"** -> **"Blank Project"**.
 3.  Open the `main.tex` file (it's created automatically).

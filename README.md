@@ -5,7 +5,7 @@ I originally created this template to compile a friend's poetry into an eBook. I
 
 **Tested on Overleaf.**
 
-I am sharing this so that anyone can publish their own poetry in a professional, minimalist design without needing to be a coding expert.
+I am sharing this so that anyone can publish their own poetry in a minimalist design.
 
 ## Features
 
